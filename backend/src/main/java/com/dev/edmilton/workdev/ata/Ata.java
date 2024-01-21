@@ -22,8 +22,13 @@ public class Ata {
     private int id;
 
     @OneToOne
+    @JoinColumn(name = "workshop_id", referencedColumnName = "id")
     private Workshop workshop;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "atas_colaboradores",
+            joinColumns = @JoinColumn(name = "ata_id"),
+            inverseJoinColumns = @JoinColumn(name = "colaborador_id"))
     private List<Colaborador> listaColaboradores;
 }

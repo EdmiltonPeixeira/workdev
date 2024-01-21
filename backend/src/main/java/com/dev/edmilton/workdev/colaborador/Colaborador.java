@@ -1,5 +1,6 @@
 package com.dev.edmilton.workdev.colaborador;
 
+import com.dev.edmilton.workdev.dto.ColaboradorDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -18,4 +19,8 @@ public class Colaborador {
 
     @Column
     private String nome;
+
+    public Colaborador(ColaboradorDto colaboradorDto){
+        this.nome = colaboradorDto.nome();
+    }
 }

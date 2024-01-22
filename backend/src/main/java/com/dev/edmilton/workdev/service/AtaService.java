@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class AtaService {
 
@@ -31,5 +33,16 @@ public class AtaService {
         }
         workshopRepository.save(ataDto.workshop());
         ataRepository.save(new Ata(ataDto));
+    }
+
+    public List<Ata> listarAtas(){
+        return ataRepository.findAll();
+    }
+
+    public void adicionarColaborador(ColaboradorDto colaboradorDto){
+        Colaborador colaborador = new Colaborador(colaboradorDto);
+        if (colaborador.getId() != null && colaboradorRepository.existsById(colaborador.getId())){
+
+        }
     }
 }

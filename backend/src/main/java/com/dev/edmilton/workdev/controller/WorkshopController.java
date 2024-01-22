@@ -1,6 +1,7 @@
 package com.dev.edmilton.workdev.controller;
 
 import com.dev.edmilton.workdev.dto.WorkshopDto;
+import com.dev.edmilton.workdev.service.WorkshopService;
 import com.dev.edmilton.workdev.workshop.Workshop;
 import com.dev.edmilton.workdev.workshop.WorkshopRepository;
 import jakarta.validation.Valid;
@@ -19,16 +20,16 @@ import java.util.List;
 public class WorkshopController {
 
     @Autowired
-    WorkshopRepository repository;
+    WorkshopService workshopService;
 
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid WorkshopDto dados){
-        repository.save(new Workshop(dados));
+    public void cadastrar(@RequestBody @Valid WorkshopDto workshopDto){
+        workshopService.create(workshopDto);
     }
 
     @GetMapping
     public Page<WorkshopDto> listar(@PageableDefault(size = 5, sort = {"nome"}) Pageable paginacao){
-        return repository.findAll(paginacao).map(WorkshopDto::new);
+        return workshopService.listarWorkshops(paginacao);
     }
 }

@@ -4,16 +4,14 @@ import com.dev.edmilton.workdev.colaborador.Colaborador;
 import com.dev.edmilton.workdev.dto.AtaDto;
 import com.dev.edmilton.workdev.workshop.Workshop;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Table(name = "atas")
 @Entity(name = "Ata")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -22,7 +20,7 @@ public class Ata {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "workshop_id", referencedColumnName = "id")
     private Workshop workshop;
 

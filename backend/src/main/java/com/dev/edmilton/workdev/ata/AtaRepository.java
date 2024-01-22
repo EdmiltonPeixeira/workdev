@@ -14,4 +14,6 @@ public interface AtaRepository extends JpaRepository<Ata, Integer> {
             "WHERE ac.id_colaborador = :idColaborador", nativeQuery = true)
     public List<Ata> findAtasByIdColaborador(int idColaborador);
 
+    public Ata findAtaById(Integer ataId);
+
 }

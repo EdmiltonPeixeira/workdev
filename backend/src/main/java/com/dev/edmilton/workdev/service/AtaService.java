@@ -39,10 +39,25 @@ public class AtaService {
         return ataRepository.findAll();
     }
 
-    public void adicionarColaborador(ColaboradorDto colaboradorDto){
-        Colaborador colaborador = new Colaborador(colaboradorDto);
-        if (colaborador.getId() != null && colaboradorRepository.existsById(colaborador.getId())){
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void adicionarColaboradorEmAta(Integer ataId, Integer colaboradorId, AtaDto ataDto){
+        if((colaboradorId != null && colaboradorRepository.existsById(colaboradorId))
+            && ataId != null && ataRepository.existsById(ataId)){
+            Colaborador colaborador = colaboradorRepository.findColaboradorById(colaboradorId);
+            Ata ata = ataRepository.findAtaById(ataId);
+            ata.getListaColaboradores().add(colaborador);
+            ataRepository.save(ata);
+        }
+    }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void removerColaboradorDeAta(Integer ataId, Integer colaboradorId){
+        if((colaboradorId != null && colaboradorRepository.existsById(colaboradorId))
+                && ataId != null && ataRepository.existsById(ataId)){
+            Colaborador colaborador = colaboradorRepository.findColaboradorById(colaboradorId);
+            Ata ata = ataRepository.findAtaById(ataId);
+            ata.getListaColaboradores().remove(colaborador);
+            ataRepository.save(ata);
         }
     }
 }

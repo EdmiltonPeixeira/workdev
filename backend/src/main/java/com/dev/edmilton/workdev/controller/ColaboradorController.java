@@ -26,6 +26,7 @@ public class ColaboradorController {
         colaboradorService.create(colaboradorDto);
     }
 
+    @GetMapping
     public Page<ColaboradorDto> listar(@PageableDefault(size = 5, sort = {"nome"}) Pageable paginacao){
         return colaboradorService.listarColaboradores(paginacao);
     }

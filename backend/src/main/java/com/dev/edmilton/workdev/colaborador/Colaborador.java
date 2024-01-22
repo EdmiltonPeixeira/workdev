@@ -2,14 +2,12 @@ package com.dev.edmilton.workdev.colaborador;
 
 import com.dev.edmilton.workdev.dto.ColaboradorDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Table(name = "colaboradores")
 @Entity(name = "Colaborador")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")

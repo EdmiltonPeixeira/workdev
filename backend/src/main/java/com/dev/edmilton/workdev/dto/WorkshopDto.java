@@ -1,5 +1,6 @@
 package com.dev.edmilton.workdev.dto;
 
+import com.dev.edmilton.workdev.workshop.Workshop;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public record WorkshopDto(
+
         @NotBlank
         String nome,
         @NotNull
@@ -19,4 +21,7 @@ public record WorkshopDto(
         String descricao
 
 ) {
+        public WorkshopDto(Workshop workshop){
+                this(workshop.getNome(), workshop.getDataRealizacao(), workshop.getDescricao());
+        }
 }

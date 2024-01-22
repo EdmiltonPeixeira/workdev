@@ -1,4 +1,4 @@
-package com.dev.edmilton.workdev.colaborador;
+package com.dev.edmilton.workdev.dto;
 
 import com.dev.edmilton.workdev.dto.ColaboradorDto;
 import com.dev.edmilton.workdev.workshop.Workshop;

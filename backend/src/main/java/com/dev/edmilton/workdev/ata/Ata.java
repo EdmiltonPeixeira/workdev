@@ -1,6 +1,7 @@
 package com.dev.edmilton.workdev.ata;
 
 import com.dev.edmilton.workdev.colaborador.Colaborador;
+import com.dev.edmilton.workdev.dto.AtaDto;
 import com.dev.edmilton.workdev.workshop.Workshop;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ import java.util.List;
 public class Ata {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @OneToOne
     @JoinColumn(name = "workshop_id", referencedColumnName = "id")
@@ -31,4 +32,9 @@ public class Ata {
             joinColumns = @JoinColumn(name = "ata_id"),
             inverseJoinColumns = @JoinColumn(name = "colaborador_id"))
     private List<Colaborador> listaColaboradores;
+
+    public Ata(AtaDto ataDto){
+        this.workshop = ataDto.workshop();
+        this.listaColaboradores = ataDto.listaColaboradores();
+    }
 }

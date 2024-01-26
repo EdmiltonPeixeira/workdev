@@ -5,6 +5,7 @@ import com.dev.edmilton.workdev.model.Ata;
 import com.dev.edmilton.workdev.dto.AtaDto;
 import com.dev.edmilton.workdev.model.Colaborador;
 import com.dev.edmilton.workdev.service.AtaService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
@@ -32,12 +33,14 @@ public class AtaController {
     @PostMapping
     @Transactional
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Realiza o cadastro de uma ata de reunião")
     public void cadastrar(@RequestBody @Valid AtaDto ataDto){
         ataService.create(ataDto);
     }
 
     @GetMapping("/todos")
     @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Retorna todas as atas de reunião cadastradas")
     public List<Ata> listar(){
         return ataService.listarAtas();
     }
@@ -45,6 +48,7 @@ public class AtaController {
     @PutMapping("/{ataId}/colaboradores/{colaboradorId}")
     @Transactional
     @ResponseStatus(HttpStatus.ACCEPTED)
+    @Operation(summary = "Adiciona um colaborador em uma ata de reunião")
     public void adicionarColaborador(@PathVariable("ataId") Integer ataId, @PathVariable("colaboradorId") Integer colaboradorId,
                                      @RequestBody @Valid AtaDto ataDto){
         ataService.adicionarColaboradorEmAta(ataId, colaboradorId, ataDto);
@@ -52,18 +56,21 @@ public class AtaController {
 
     @DeleteMapping("/{ataId}/colaboradores/{colaboradorId}")
     @Transactional
+    @Operation(summary = "Remove um colaborador de uma ata de reunião")
     public void removerColaborador(@PathVariable("ataId") Integer ataId, @PathVariable("colaboradorId") Integer colaboradorId){
         ataService.removerColaboradorDeAta(ataId, colaboradorId);
     }
 
     @GetMapping("/workshopNome")
     @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Filtra os colaboradores pelo nome do workshop")
     public List<ColaboradorDto> listarColaboradoresPorNomeWorkshop(@RequestParam(name = "nome") String nome){
         return ataService.colaboradoresPorWorkshopNome(nome);
     }
 
     @GetMapping("/dataRealizacao")
     @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Filtra os colaboradores pela data do workshop")
     public List<ColaboradorDto> listarColaboradoresPorDataWorkshop(@RequestParam(name = "data") String data){
         return ataService.colaboradoresPorDataWorkshop(data);
     }

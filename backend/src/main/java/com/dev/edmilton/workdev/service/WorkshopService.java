@@ -1,8 +1,8 @@
 package com.dev.edmilton.workdev.service;
 
 import com.dev.edmilton.workdev.dto.WorkshopDto;
-import com.dev.edmilton.workdev.workshop.Workshop;
-import com.dev.edmilton.workdev.workshop.WorkshopRepository;
+import com.dev.edmilton.workdev.model.Workshop;
+import com.dev.edmilton.workdev.repository.WorkshopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

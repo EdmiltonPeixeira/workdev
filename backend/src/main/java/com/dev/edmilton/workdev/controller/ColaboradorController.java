@@ -1,9 +1,7 @@
 package com.dev.edmilton.workdev.controller;
 
-import com.dev.edmilton.workdev.ata.AtaRepository;
-import com.dev.edmilton.workdev.colaborador.Colaborador;
-import com.dev.edmilton.workdev.colaborador.ColaboradorRepository;
 import com.dev.edmilton.workdev.dto.ColaboradorDto;
+import com.dev.edmilton.workdev.dto.ColaboradorEWorkshopsDto;
 import com.dev.edmilton.workdev.service.ColaboradorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +11,11 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/colaboradores")
+@CrossOrigin(origins = "http://localhost:8081")
 public class ColaboradorController {
 
     @Autowired
@@ -26,8 +27,14 @@ public class ColaboradorController {
         colaboradorService.create(colaboradorDto);
     }
 
-    @GetMapping
-    public Page<ColaboradorDto> listar(@PageableDefault(size = 5, sort = {"nome"}) Pageable paginacao){
-        return colaboradorService.listarColaboradores(paginacao);
+    @GetMapping("/todos")
+    public List<ColaboradorDto> listar(){
+        return colaboradorService.listarColaboradores();
     }
+
+    @GetMapping
+    public List<ColaboradorEWorkshopsDto> listaColaboradoresEWorkshop(){
+        return colaboradorService.listarColaboradoresComWorkshops();
+    }
+
 }

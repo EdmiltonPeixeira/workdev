@@ -1,7 +1,7 @@
 package com.dev.edmilton.workdev.dto;
 
-import com.dev.edmilton.workdev.colaborador.Colaborador;
-import com.dev.edmilton.workdev.workshop.Workshop;
+import com.dev.edmilton.workdev.model.Colaborador;
+import com.dev.edmilton.workdev.model.Workshop;
 
 import java.util.List;
 

@@ -1,8 +1,6 @@
-package com.dev.edmilton.workdev.ata;
+package com.dev.edmilton.workdev.model;
 
-import com.dev.edmilton.workdev.colaborador.Colaborador;
 import com.dev.edmilton.workdev.dto.AtaDto;
-import com.dev.edmilton.workdev.workshop.Workshop;
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,10 +1,10 @@
-package com.dev.edmilton.workdev.colaborador;
+package com.dev.edmilton.workdev.model;
 
 import com.dev.edmilton.workdev.dto.ColaboradorDto;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name = "colaboradores")
+@Table(name = "colaboradores", schema = "workdev")
 @Entity(name = "Colaborador")
 @Getter
 @Setter
@@ -21,4 +21,5 @@ public class Colaborador {
     public Colaborador(ColaboradorDto colaboradorDto){
         this.nome = colaboradorDto.nome();
     }
+
 }

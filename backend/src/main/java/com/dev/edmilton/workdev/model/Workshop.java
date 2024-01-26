@@ -1,4 +1,4 @@
-package com.dev.edmilton.workdev.workshop;
+package com.dev.edmilton.workdev.model;
 
 import com.dev.edmilton.workdev.dto.WorkshopDto;
 import jakarta.persistence.*;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Table(name = "workshops")
+@Table(name = "workshops", schema = "workdev")
 @Entity(name = "Workshop")
 @Getter
 @NoArgsConstructor

@@ -1,14 +1,11 @@
 package com.dev.edmilton.workdev.dto;
 
-import com.dev.edmilton.workdev.workshop.Workshop;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.dev.edmilton.workdev.model.Workshop;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public record WorkshopDto(
 
